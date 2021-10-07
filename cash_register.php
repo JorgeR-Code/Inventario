@@ -184,8 +184,10 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
         <meta name="author" content="" />
         <title>Caja registradora</title>
         <link rel="icon" href="favicon/favicon.png">
+        <link href="css/style_search_prod.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="js/jquery.dataTables.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
@@ -322,41 +324,39 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
                                                                 </thead>
                                                                 <tbody>
                                                                     <tr>
-                                                                        <td><a href="#">inicio</a></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><a href="#">jamon</a></td>
+                                                                        <td><a href="#">Jamon</a></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><a href="#">crema</a></td>
                                                                     </tr>
                                                                     <tr>
+                                                                        <td><a href="#">queso</a></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><a href="#">mayonesa</a></td>
+                                                                    </tr>
+                                                                    <tr>
                                                                         <td><a href="#">leche</a></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><a href="#">yakult</a></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><a href="#">salchicha</a></td>
+                                                                        <td><a href="#">Jamon</a></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><a href="#">pepperoni</a></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><a href="#">chuleta</a></td>
+                                                                        <td><a href="#">yakult</a></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><a href="#">chuleta</a></td>
+                                                                        <td><a href="#">parmesano</a></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><a href="#">chuleta</a></td>
+                                                                        <td><a href="#">sachicha</a></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><a href="#">chuleta</a></td>
+                                                                        <td><a href="#">queso amarillo</a></td>
                                                                     </tr>
-                                                                    <tr>
-                                                                        <td><a href="#">chuleta</a></td>
-                                                                    </tr>
+                                                                    
                                                                 </tbody>
                                                             </table>
                                                         </div>
