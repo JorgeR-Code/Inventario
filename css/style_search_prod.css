@@ -4,10 +4,10 @@
 .content-search{
 
     margin-left: 2px;
-    width: 100%;
+    width: inherit;
     height: 30vh;
-    display: block;
     position: absolute ;
+    display: none;
 
     background: white;
     z-index: 100;
