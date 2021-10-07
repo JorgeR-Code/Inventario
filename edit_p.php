@@ -267,8 +267,8 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1"))
                                                         <label for="inputId">id</label>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3 mb-3">
-                                                    <div class="form-floating" id="grupo__categoria">
+                                                <div class="col-md-3 mb-3" id="grupo__categoria">
+                                                    <div class="form-floating">
                                                       <?php $valor = $row_lista_productos['categoria'];?>
                                                         <select class="form-control" id="inputcathegory" name="categoria" type="text" placeholder="Selecciona la categoría">
                                                             <option value= "<?php echo $valor ?>" <?php if (!(strcmp( "$valor", ""))) {echo "SELECTED";} ?> selected hidden><?php echo $valor ?></option>
