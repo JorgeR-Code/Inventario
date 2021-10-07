@@ -185,6 +185,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
         <title>Caja registradora</title>
         <link rel="icon" href="favicon/favicon.png">
         <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
@@ -280,11 +281,14 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
                                                 </div>
                                             </div>
                                             
-                                            <div class="col-md-3">
+                                            <div class="col-md-3" id="grupo__barras">
                                                 <div class="form-floating">
                                                     <input class="form-control" id="inputBarCode" name="codigo_barras" type="text" placeholder="Código de barras" />
-                                                    <label for="inputBarCode">Código de barras</label>
+                                                    <i class="formulario__validation-estado fas fa-times-circle"></i>
+                                                    <label class="formulario__label" for="inputBarCode">Código de barras</label>
                                                 </div>
+                                                <p class="formulario__input-error">Deben ser 10 dígitos numéricos.</p>
+
                                             </div>
                                             <div class="col-md-1">
                                                 <div >
@@ -292,10 +296,70 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
                                                 </div>
                                             </div>
                                             
-                                            <div class="col-md-3">
+                                            <!-- <div class="col-md-3" id="grupo__nombre">
                                                     <div class="form-floating mb-3 mb-md-0">
                                                         <input class="form-control" id="inputName" name="nombre" type="text" placeholder="Nombre del producto"/>
-                                                        <label for="inputName">Nombre del producto</label>
+                                                        <i class="formulario__validation-estado fas fa-times-circle"></i>
+                                                        <label class="formulario__label" for="inputName">Nombre del producto</label>
+                                                    </div>
+                                                    <p class="formulario__input-error">El nombre del producto tiene que ser de 1 a 20 dígitos y solo puede contener letras, acentos y espacios.</p>
+
+                                            </div> -->
+                                            <div class="col-md-3" id="grupo__nombre">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" id="inputSearch" name="nombre" type="search" placeholder="Nombre del producto"/>
+                                                        <i class="formulario__validation-estado fas fa-times-circle"></i>
+                                                        <label class="formulario__label" for="inputName">Nombre del producto</label>
+                                                    </div>
+                                                    <p class="formulario__input-error">El nombre del producto tiene que ser de 1 a 20 dígitos y solo puede contener letras, acentos y espacios.</p>
+                                                    <div class="content-search">
+                                                        <div class="content-table">
+                                                            <table>
+                                                                <thead>
+                                                                    <tr>
+                                                                        <td></td>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td><a href="#">inicio</a></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><a href="#">jamon</a></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><a href="#">crema</a></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><a href="#">leche</a></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><a href="#">yakult</a></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><a href="#">salchicha</a></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><a href="#">pepperoni</a></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><a href="#">chuleta</a></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><a href="#">chuleta</a></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><a href="#">chuleta</a></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><a href="#">chuleta</a></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><a href="#">chuleta</a></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
                                                     </div>
                                             </div>
                                             <div class="col-md-3">
@@ -376,7 +440,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
-        
+        <script src="js/validation_form.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
     </body>
