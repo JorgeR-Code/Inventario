@@ -183,14 +183,17 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Caja registradora</title>
+        
         <link rel="icon" href="favicon/favicon.png">
         <link href="css/style_search_prod.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
-        <script src="js/jquery.js"></script>
-        <script src="js/jquery.dataTables.min.js"></script>
+
+        <!-- <script src="js/jquery.js"></script>
+        <script src="js/jquery.dataTables.min.js"></script> -->
         
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-    </head>
+        
+   </head>
     <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
@@ -308,10 +311,11 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
                                                     <p class="formulario__input-error">El nombre del producto tiene que ser de 1 a 20 dígitos y solo puede contener letras, acentos y espacios.</p>
 
                                             </div> -->
-                                            <div class="col-md-3">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputSearch" name="nombre1" type="search" placeholder="Nombre del producto"/>
+                                            <div class="col-md-3 content">
+                                                    <div class="form-floating mb-3 mb-md-0 search">
+                                                        <input  class="form-control" id="busqueda" name="nombre" type="text" placeholder="Nombre del producto"/>
                                                         <label for="inputName">Nombre del producto</label>
+                                                        <i class="fa fa-search"></i>
                                                     </div>
                                                     <div class="content-search">
                                                         <div class="content-table">
@@ -437,12 +441,17 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
                 </footer>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
-        <script src="js/validation_form.js"></script>
+        
+        <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script> -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="js/search_cash.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-        <script src="js/datatables-simple-demo.js"></script>
+        <script src="js/scripts.js"></script>
+
+
+        <!-- <script src="js/validation_form.js"></script> -->
+        <!-- <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+        <script src="js/datatables-simple-demo.js"></script> -->
+        
     </body>
 </html>
 <?php
