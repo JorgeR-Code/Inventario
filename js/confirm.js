@@ -47,20 +47,7 @@ function confirmation(ev) {
   
   }
  
-// //Funcion para confirmar la eliminacion del registro
-// function confirmacion(e){
-//     if (confirm("¿Seguro que quieres eliminar este registro?")){
-//         return true;
-//     }else{
-//         e.preventDefault();
-//     }
-// }
 
-
-// let linkeDelete = document.querySelectorAll(".eliminar");
-// for (var i = 0; i < linkeDelete.length; i++){
-//     linkeDelete[i].addEventListener('click', confirmacion);
-// }
 
 
 

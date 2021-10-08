@@ -1,21 +1,4 @@
 
-// (function(){
-
-//     var buscador = $('#table').DateTable();
-
-//     $("#inputSearch").keyup(function(){
-    
-//         buscador.search($(this).val()).draw();
-    
-//         if($("#inputSearch").val() == ""){
-//             $(".content-search").fadeOut(300);
-//         }else{
-//             $(".content-search").fadeIn(300);
-//         }
-//     })
-
-// });
-
 $(document).ready(function(){
     var busqueda = $('#busqueda'),
     titulo = $('table tbody tr td a');
@@ -29,18 +12,18 @@ $(document).ready(function(){
         //
         var clase = $('.search svg');
         if($(busqueda).val() != ''){
-        $(clase).attr('class', 'fa fa-times');
+        $(clase).attr('class', 'fas fa-times');
         }else{
-        $(clase).attr('class', 'fa fa-search');
+        $(clase).attr('class', 'fas fa-search');
         }
-        if($(clase).hasClass('fa fa-times')){
+        if($(clase).hasClass('fas fa-times')){
         $(clase).click(function(){
         //borramos el contenido del input
-        $(busqueda).val('');
+        $(busqueda).val(" ");
         //mostramos todas las listas
         $(li).parent().show();
         //volvemos a añadir la clase para mostrar la lupa
-        $(clase).attr('class', 'fa fa-search');
+        $(clase).attr('class', 'fas fa-search');
         });
         }
         //ocultamos toda la lista
