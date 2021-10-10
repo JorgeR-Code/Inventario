@@ -42,3 +42,7 @@
     color: white;
     background:rgba(13 110 253);
   }
+  tbody tr td a:focus{
+    color: white;
+    background:rgba(13 110 253);
+  }

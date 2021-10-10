@@ -15,6 +15,7 @@ $(document).ready(function(){
         if($(busqueda).val() != ''){
         $(clase).attr('class', 'fas fa-times');
         $(".content-search").show();
+                  
         }else{
         $(clase).attr('class', 'fas fa-search');
         $(".content-search").hide();
@@ -38,40 +39,46 @@ $(document).ready(function(){
         if($(li).text().toLowerCase().indexOf(txt) > -1){
         //mostramos las listas que coincidan
         $(li).parent().show();
-        $(function() 
-                {
-                $('#table').keyup(function(e) {
-                    if(e.keyCode==37)//38 para arriba
-                    mover(e,-1);
-                    if(e.keyCode==39)//40 para abajo
-                    mover(e,1);
-                });
-                });
 
-
-                function mover(event, to) {
-                let list = $('a');
-                let index = list.index($(event.target));
-                index = (index + to) % list.length;
-                list.eq(index).focus();
-                }
-        
-       
-        
+     
         }
+
+        
+
         });
+
         $(li).click(function(){
             var resultado = $(li).parent();
             var resultado2 = resultado.text();
-            $('#busqueda').val(resultado2);
-            $(li).parent().hide();
-            $("#enterProduct").trigger("click");
+            $(li).parent().focus();
+            // $('#busqueda').val(resultado2);
+            // $(li).parent().hide();
+            // $("#enterProduct").trigger("click");
 
         })
-        
+        $(function() 
+            {
+            $(li).keyup(function(e) {
+                if(e.keyCode==38)//38 para arriba
+                mover(e,-1);
+                if(e.keyCode==40)//40 para abajo
+                mover(e,1);
+            });
+            });
 
+
+            function mover(event, to) {
+            var resultado = $(li).parent();
+            var resultado2 = resultado.text();
+            let list = $('td a');
+            console.log(list);
+            let index = list.index($(event.target));
+            index = (index + to) % list.length;
+            list.eq(index).focus();
+            }
+        
         });    
-       
+      
        
 });
    

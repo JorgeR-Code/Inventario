@@ -326,7 +326,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
                                                                 </thead>
                                                                 <tbody>
                                                                     <tr>
-                                                                        <td><a id="jamon" href="#">Jamon</a></td>
+                                                                        <td><a href="#">Jamon</a></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><a href="#">crema</a></td>
@@ -340,7 +340,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
                                                                     <tr>
                                                                         <td><a href="#">leche</a></td>
                                                                     </tr>
-                                                                    <tr id="jamon">
+                                                                    <tr>
                                                                         <td><a  href="#">Jamon</a></td>
                                                                     </tr>
                                                                     <tr>
