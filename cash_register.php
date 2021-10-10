@@ -326,23 +326,15 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
                                                     <div><h3 class="text-center font-weight-light my-2">o</h3></div>
                                                 </div>
                                             </div>
-                                            
-                                            <!-- <div class="col-md-3" id="grupo__nombre">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputName" name="nombre" type="text" placeholder="Nombre del producto"/>
-                                                        <i class="formulario__validation-estado fas fa-times-circle"></i>
-                                                        <label class="formulario__label" for="inputName">Nombre del producto</label>
-                                                    </div>
-                                                    <p class="formulario__input-error">El nombre del producto tiene que ser de 1 a 20 dígitos y solo puede contener letras, acentos y espacios.</p>
-
-                                            </div> -->
-                                            <div class="col-md-3 content">
+                            
+                                            <div class="col-md-3 content" id="grupo__nombre">
                                                     <div class="form-floating search">
                                                         <input  class="form-control" id="busqueda" name="nombre" type="text" placeholder="Nombre del producto"/>
+                                                        <i class="formulario__validation-estado fas fa-times-circle"></i>
                                                         <label for="inputName">Nombre del producto</label>
-                                                        <i class="fas fa-search"></i>
                                                     </div>
-                                                    
+                                                    <p class="formulario__input-error">Deben ser 10 dígitos numéricos.</p>
+
                                             </div>
                                             <div class="col-md-3">
                                             <div class="d-grid d-grid2"><input type="submit" id="enterProduct"class="btn btn-primary btn-block" value="Agregar"/></div>
@@ -447,11 +439,11 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
         <script src="js/scripts.js"></script>
         <script src="js/all.min.js"></script>
         
-<!-- 
-        <script src="js/validation_form.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-        <script src="js/datatables-simple-demo.js"></script>
-         -->
+
+        <!-- <script src="js/validation_form.js"></script> -->
+        <!-- <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+        <script src="js/datatables-simple-demo.js"></script> -->
+        
     </body>
 </html>
 <?php
