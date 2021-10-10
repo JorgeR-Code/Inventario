@@ -71,6 +71,8 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
   exit;
 }
 ?>
+
+<!-- ///-----------Get product-----------////////// -->
 <?php require_once('Connections/db.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
@@ -135,6 +137,29 @@ if ((isset($_POST["MM_show"])) && ($_POST["MM_show"] == "form1")) {
     $totalPages_lista_productos = ceil($totalRows_lista_productos/$maxRows_lista_productos)-1;
 }
 
+////--------show products-----------///////
+
+$maxRows_lista_productos1 = 100;
+$pageNum_lista_productos1 = 0;
+if (isset($_GET['pageNum_lista_productos'])) {
+  $pageNum_lista_productos1 = $_GET['pageNum_lista_productos'];
+}
+$startRow_lista_productos1 = $pageNum_lista_productos1 * $maxRows_lista_productos1;
+
+mysql_select_db($database_db, $db);
+$query_lista_productos1 = "SELECT * FROM productos";
+$query_limit_lista_productos1 = sprintf("%s LIMIT %d, %d", $query_lista_productos1, $startRow_lista_productos1, $maxRows_lista_productos1);
+$lista_productos1 = mysql_query($query_limit_lista_productos1, $db) or die(mysql_error());
+$row_lista_productos1 = mysql_fetch_assoc($lista_productos1);
+
+if (isset($_GET['totalRows_lista_productos'])) {
+  $totalRows_lista_productos1 = $_GET['totalRows_lista_productos'];
+} else {
+  $all_lista_productos = mysql_query($query_lista_productos1);
+  $totalRows_lista_productos1 = mysql_num_rows($all_lista_productos);
+}
+$totalPages_lista_productos1 = ceil($totalRows_lista_productos1/$maxRows_lista_productos1)-1;
+
 //------------------------UPDATE------------------------------------- -->
 
 $editFormAction = $_SERVER['PHP_SELF'];
@@ -187,7 +212,6 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
         <link rel="icon" href="favicon/favicon.png">
         <link href="css/styles.css" rel="stylesheet" />
         <link href="css/style_search_prod.css" rel="stylesheet" />
-        <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
         <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
         
@@ -327,6 +351,26 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
                                         
                                         <input type="hidden" name="MM_show" value="form1" />
                                     </form>
+                                    <div class="content-search">
+                                        <table>
+                                                <thead>
+                                                    <tr>
+                                                        
+                                                        <th></th>
+                                                        
+                                                    </tr>
+                                                </thead>
+                                                
+                                                <tbody>
+                                                <?php do { ?>
+                                                    <tr>                                   
+                                                    <td><a><?php echo $row_lista_productos1['nombre']; ?></a></td>
+                                                    </tr>
+                                                    <?php } while ($row_lista_productos1 = mysql_fetch_assoc($lista_productos1)); ?>
+                                                </tbody>
+                                                
+                                            </table>
+                                    </div>
                                 <form action="<?php echo $editFormAction; ?>" method="post" name="form2" id="form2">
                                 <?php do { ?>
                                             <div class="row mb-3">

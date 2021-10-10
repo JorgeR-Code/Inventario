@@ -1,39 +1,21 @@
 jQuery(document).ready(function ($) {
-    var countryTags = [
-        "Albania",
-        "Algeria",
-        "Andorra",
-        "Angola",
-        "Australia",
-        "Austria",
-        "Bahamas",
-        "Bahrain",
-        "Bangladesh",
-        "Barbados",
-        "Belarus",
-        "Belgium",
-        "Belize",
-        "Benin",
-        "Botswana",
-        "Brazil",
-        "Burma",
-        "Burundi",
-        "Cambodia",
-        "Cameroon",
-        "Canada",
-        "Chad",
-        "Chile",
-        "China",
-        "Colombia",
-        "Comoros",
-        "Congo"
-    ];
+
+    titulo = $('table tbody tr td a'); //seleccionamos de sonde se tomarán los datos
+    var countryTags = [];//variable de tipo arreglo para almacenar los valores
 
 
+    $(titulo).each(function(){//por cada valor se ejecuta la siguiente funcion
+        var li = $(this);
+        var texto = $(li).text(); //se obtiene solo el texto de la etiqueta "a"
+  
+       countryTags.push(texto);//se inserta el valor actual al arreglo
+       
+        });
 
+        console.log(countryTags);
 
-    $("#busqueda").autocomplete({
-        source: countryTags
+    $("#busqueda").autocomplete({//la siguiente funcion es tomada de la libreria para ejecutar el autocompletar
+        source: countryTags//los valores para autocompletar son los almacenados el el array anterior
     });
 
 
