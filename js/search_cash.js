@@ -5,6 +5,7 @@ $(document).ready(function(){
 
     $(titulo).each(function(){
         var li = $(this);
+        
         //si presionamos la tecla
         $(busqueda).keyup(function(){
         //cambiamos a minusculas
@@ -37,16 +38,41 @@ $(document).ready(function(){
         if($(li).text().toLowerCase().indexOf(txt) > -1){
         //mostramos las listas que coincidan
         $(li).parent().show();
-        var resultado = $(li).parent();
-        var resultado2 = resultado.text();
+        $(function() 
+                {
+                $('#table').keyup(function(e) {
+                    if(e.keyCode==37)//38 para arriba
+                    mover(e,-1);
+                    if(e.keyCode==39)//40 para abajo
+                    mover(e,1);
+                });
+                });
+
+
+                function mover(event, to) {
+                let list = $('a');
+                let index = list.index($(event.target));
+                index = (index + to) % list.length;
+                list.eq(index).focus();
+                }
+        
+       
+        
         }
         });
-        });    
+        $(li).click(function(){
+            var resultado = $(li).parent();
+            var resultado2 = resultado.text();
+            $('#busqueda').val(resultado2);
+            $(li).parent().hide();
+            $("#enterProduct").trigger("click");
 
-        $(titulo).click(function(){
-            console.log($(this.attr('a')));
         })
+        
 
+        });    
+       
+       
 });
    
     

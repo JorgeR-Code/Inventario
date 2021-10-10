@@ -312,7 +312,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
                                             </div> -->
                                             <div class="col-md-3 content">
                                                     <div class="form-floating search">
-                                                        <input  class="form-control" id="busqueda" name="nombre1" type="text" placeholder="Nombre del producto"/>
+                                                        <input  class="form-control" id="busqueda" name="nombre" type="text" placeholder="Nombre del producto"/>
                                                         <label for="inputName">Nombre del producto</label>
                                                         <i class="fas fa-search"></i>
                                                     </div>
@@ -326,7 +326,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
                                                                 </thead>
                                                                 <tbody>
                                                                     <tr>
-                                                                        <td><a href="#">Jamon</a></td>
+                                                                        <td><a id="jamon" href="#">Jamon</a></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><a href="#">crema</a></td>
@@ -340,8 +340,8 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
                                                                     <tr>
                                                                         <td><a href="#">leche</a></td>
                                                                     </tr>
-                                                                    <tr>
-                                                                        <td><a href="#">Jamon</a></td>
+                                                                    <tr id="jamon">
+                                                                        <td><a  href="#">Jamon</a></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><a href="#">pepperoni</a></td>
@@ -365,7 +365,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
                                                     </div>
                                             </div>
                                             <div class="col-md-3">
-                                            <div class="d-grid d-grid2"><input type="submit" id="createAccount"class="btn btn-primary btn-block" value="Agregar"/></div>
+                                            <div class="d-grid d-grid2"><input type="submit" id="enterProduct"class="btn btn-primary btn-block" value="Agregar"/></div>
                                             </div>
                                         </div>
                                         
@@ -447,11 +447,11 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
         <script src="js/scripts.js"></script>
         <script src="js/all.min.js"></script>
 
-
-        <!-- <script src="js/validation_form.js"></script> -->
-        <!-- <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-        <script src="js/datatables-simple-demo.js"></script> -->
-        
+<!-- 
+        <script src="js/validation_form.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+        <script src="js/datatables-simple-demo.js"></script>
+         -->
     </body>
 </html>
 <?php
