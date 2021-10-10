@@ -187,7 +187,9 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
         <link rel="icon" href="favicon/favicon.png">
         <link href="css/styles.css" rel="stylesheet" />
         <link href="css/style_search_prod.css" rel="stylesheet" />
-
+        <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+        <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
         
         <!-- <link href="css/font-awesome.css" rel="stylesheet" /> -->
 
@@ -316,53 +318,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
                                                         <label for="inputName">Nombre del producto</label>
                                                         <i class="fas fa-search"></i>
                                                     </div>
-                                                    <div class="content-search">
-                                                        <div class="content-table">
-                                                            <table id="table">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <td></td>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td><a href="#">Jamon</a></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><a href="#">crema</a></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><a href="#">queso</a></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><a href="#">mayonesa</a></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><a href="#">leche</a></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><a  href="#">Jamon</a></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><a href="#">pepperoni</a></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><a href="#">yakult</a></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><a href="#">parmesano</a></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><a href="#">sachicha</a></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><a href="#">queso amarillo</a></td>
-                                                                    </tr>
-                                                                    
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
+                                                    
                                             </div>
                                             <div class="col-md-3">
                                             <div class="d-grid d-grid2"><input type="submit" id="enterProduct"class="btn btn-primary btn-block" value="Agregar"/></div>
@@ -440,13 +396,13 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
                 </footer>
             </div>
         </div>
-        
+       
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
         <script src="js/search_cash.js"></script>
         <script src="js/scripts.js"></script>
         <script src="js/all.min.js"></script>
-
+        
 <!-- 
         <script src="js/validation_form.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
