@@ -331,7 +331,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
                                                     <div class="form-floating search">
                                                         <input  class="form-control" id="busqueda" name="nombre" type="text" placeholder="Nombre del producto"/>
                                                         <i class="formulario__validation-estado fas fa-times-circle"></i>
-                                                        <label for="inputName">Nombre del producto</label>
+                                                        <label class="formulario__label" for="inputName">Nombre del producto</label>
                                                     </div>
                                                     <p class="formulario__input-error">Producto inexistente.</p>
                                             </div>
@@ -382,6 +382,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
                                                         <input class="form-control" id="inputCat" name="categoria" type="text" value="<?php echo $row_lista_productos['categoria']; ?>" readonly/>
                                                         <label for="inputCat">Categoría</label>
                                                     </div>
+                                                    
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-floating mb-3 mb-md-0">
@@ -389,11 +390,15 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
                                                         <label for="inputName">Producto</label>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-2">
+                                                <div class="col-md-2" id="grupo__cantidad">
                                                     <div class="form-floating mb-3 mb-md-0">
                                                         <input class="form-control" id="inputCant" type="text" name="cantidad"/>
-                                                        <label for="inputCant">Cantidad</label>
+                                                        <i class="formulario__validation-estado fas fa-times-circle"></i>
+
+                                                        <label class="formulario__label" for="inputCant">Cantidad</label>
                                                     </div>
+                                                    <p class="formulario__input-error">Debe ingresar una cantidad con valor numérico.</p>
+
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-floating mb-3 mb-md-0">
@@ -412,10 +417,14 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
                                                     </div>
                                                 </div>
                                             </div>
-                                            
-                                            <div class="mt-4 mb-0">
-                                                <div class="d-grid"><input type="submit" id="createAccount"class="btn btn-primary btn-block" value="Registrar venta"/></div>
+                                            <div class="mt-4 mb-0 formulario__mensaje" id="formulario__mensaje2">
+                                                <p><i class="fas fa-exclamation-triangle"></i><b> Error:</b>No puede registrar la venta sin una cantidad!</p>
                                             </div>
+                                        </div>
+                                            <div class="mt-4 mb-0">
+                                                <div class="d-grid"><input type="submit" id="RegisterSale"class="btn btn-primary btn-block" value="Registrar venta"/></div>
+                                            </div>
+                                            
                                             <input type="hidden" name="MM_insert" value="form2" />
                                             <?php } while ($row_lista_productos = mysql_fetch_assoc($lista_productos)); ?>
                                     </form>
