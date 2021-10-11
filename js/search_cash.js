@@ -26,20 +26,27 @@ const validarFormulario = (e) => {
             function valores (countryTags){
 
                 for (var i = 0; i < countryTags.length; i++) {
-                
-                  if (e.target.value == countryTags[i] && expresiones.nombre.test(e.target.value)) {
+                   
+                  if (e.target.value == countryTags[i]) {
+
                     document.getElementById(`grupo__nombre`).classList.remove('formulario__grupo-incorrecto');
                     document.getElementById(`grupo__nombre`).classList.add('formulario__grupo-correcto');
                     document.querySelector(`#grupo__nombre svg`).classList.remove('fa-times-circle');
                     document.querySelector(`#grupo__nombre svg`).classList.add('fa-check-circle');
                     document.querySelector(`#grupo__nombre .formulario__input-error`).classList.remove('formulario__input-error-activo')
+                    $('#enterProduct').show();
                     campos['nombre'] = true;
+                    break;
                   }else{
+
+
                     document.getElementById(`grupo__nombre`).classList.remove('formulario__grupo-correcto');
                     document.getElementById(`grupo__nombre`).classList.add('formulario__grupo-incorrecto');
                     document.querySelector(`#grupo__nombre svg`).classList.remove('fa-check-circle');
                     document.querySelector(`#grupo__nombre svg`).classList.add('fa-times-circle');
                     document.querySelector(`#grupo__nombre .formulario__input-error`).classList.add('formulario__input-error-activo')
+                    $('#enterProduct').hide();
+
                     campos['nombre'] = false;
                   }
 
@@ -75,6 +82,10 @@ const validarFormulario = (e) => {
         });
     
         valores (countryTags);
+
+        $("#ui-id-1").click(function(){
+            $("#busqueda").blur();
+         });
     });
 }
 
@@ -85,7 +96,8 @@ const validarCampo = (expresion, input, campo) => {
         document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-correcto');
         document.querySelector(`#grupo__${campo} svg`).classList.remove('fa-times-circle');
         document.querySelector(`#grupo__${campo} svg`).classList.add('fa-check-circle');
-        document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.remove('formulario__input-error-activo')
+        document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.remove('formulario__input-error-activo');
+        $('#enterProduct').show();
         campos[campo] = true;
 
     } else {
@@ -93,7 +105,8 @@ const validarCampo = (expresion, input, campo) => {
         document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-incorrecto');
         document.querySelector(`#grupo__${campo} svg`).classList.remove('fa-check-circle');
         document.querySelector(`#grupo__${campo} svg`).classList.add('fa-times-circle');
-        document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.add('formulario__input-error-activo')
+        document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.add('formulario__input-error-activo');
+        $('#enterProduct').hide();
         campos[campo] = false;
 
 
@@ -108,13 +121,17 @@ inputs.forEach((input) => {
 
 /////------Boton submit para "Registrar"------////////////
 window.addEventListener("load",function(){
-    $("#agregarId").click(function(e){ 
+    $('#enterProduct').hide();
+    
+    $("#enterProduct").click(function(e){ 
     
         e.preventDefault();
      
-        if(campos.nombre && campos.apellido && campos.telefono && campos.acceso && campos.inputPassword){
-            $("#agregarId").unbind('click').click();
-    
+        if(campos.nombre || campos.barras){
+            $("#enterProduct").unbind('click').click();
+            $('#enterProduct').hide();
+
+            $('#form2').show();
         }else{
             
             document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');

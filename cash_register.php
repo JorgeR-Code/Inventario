@@ -306,7 +306,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
                             <form action="<?php echo $showFormAction; ?>" method="post" name="form1" id="form1">
                                         
                                         <div class="row mb-3">
-                                        <div class="col-md-2">
+                                            <div class="col-md-3">
                                                 <div >
                                                     <div><h3 class="text-center font-weight-light my-2">Agregar por</h3></div>
                                                 </div>
@@ -333,11 +333,15 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
                                                         <i class="formulario__validation-estado fas fa-times-circle"></i>
                                                         <label for="inputName">Nombre del producto</label>
                                                     </div>
-                                                    <p class="formulario__input-error">Deben ser 10 dígitos numéricos.</p>
-
+                                                    <p class="formulario__input-error">Producto inexistente.</p>
                                             </div>
-                                            <div class="col-md-3">
-                                            <div class="d-grid d-grid2"><input type="submit" id="enterProduct"class="btn btn-primary btn-block" value="Agregar"/></div>
+                      
+                                        </div>
+                                        <div class="row mb-3">
+                                                <div class="d-grid"><input type="submit" id="enterProduct"class="btn btn-primary btn-block" value="Agregar"/>
+                                        </div>
+                                        <div class="mt-4 mb-0 formulario__mensaje" id="formulario__mensaje">
+                                                <p><i class="fas fa-exclamation-triangle"></i><b> Error:</b> Por favor rellena el formulario correctamente!</p>
                                             </div>
                                         </div>
                                         
