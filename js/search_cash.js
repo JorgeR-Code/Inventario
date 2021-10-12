@@ -7,7 +7,7 @@ const inputs2 = document.querySelectorAll('#form2 input')
 const expresiones = {
     //	usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
         nombre: /^[a-zA-ZÀ-ÿ\s]{1,20}$/, // Letras y espacios, pueden llevar acentos.
-        cantidad: /^\d{1,2}$/, // 7 a 14 numeros.
+        cantidad: /^([1-9]|[1-9]\d{1,2})/, // 7 a 14 numeros.
         barras: /^\d{10}$/ // 7 a 14 numeros.
     
     }
@@ -22,15 +22,14 @@ const expresiones = {
 
     
 const validarFormulario = (e) => {
+    var countryTags1 = [];//variable de tipo arreglo para almacenar los valores
     var countryTags = [];//variable de tipo arreglo para almacenar los valores
 
 
     jQuery(document).ready(function ($) {
 
-        titulo = $('table tbody tr td a'); //seleccionamos de sonde se tomarán los datos
-        
-    
-    
+        titulo = $('#table2 tbody tr td .nombre'); //seleccionamos de donde se tomarán los datos para la entrada nombre
+
         $(titulo).each(function(){//por cada valor se ejecuta la siguiente funcion
             var li = $(this);
             var texto = $(li).text(); //se obtiene solo el texto de la etiqueta "a"
@@ -38,7 +37,10 @@ const validarFormulario = (e) => {
            countryTags.push(texto);//se inserta el valor actual al arreglo
            
             });
+
+            
     
+        
         $("#busqueda").autocomplete({//la siguiente funcion es tomada de la libreria para ejecutar el autocompletar
             source: countryTags//los valores para autocompletar son los almacenados el el array anterior
         });
@@ -47,8 +49,31 @@ const validarFormulario = (e) => {
         $("#ui-id-1").click(function(){
             $("#busqueda").blur();
          });
+       
     });
+    jQuery(document).ready(function ($) {
 
+        barrasz = $('#table2 tbody tr td .barras'); //seleccionamos de donde se tomarán los datos para la entrada codigo de barras
+        console.log(barrasz);
+
+
+        $(barrasz).each(function(){//por cada valor se ejecuta la siguiente funcion
+            var li1 = $(this);
+            var texto1 = $(li1).text(); //se obtiene solo el texto de la etiqueta "a"
+
+           countryTags1.push(texto1);//se inserta el valor actual al arreglo
+           
+            });    
+
+        $("#inputBarCode").autocomplete({//la siguiente funcion es tomada de la libreria para ejecutar el autocompletar
+            source: countryTags1//los valores para autocompletar son los almacenados el el array anterior
+        });
+       
+    
+        $("#ui-id-2").click(function(){
+            $("#inputBarCode").blur();
+        });
+    });
 
 
     
@@ -76,27 +101,31 @@ const validarFormulario = (e) => {
         break;
         
         case 'codigo_barras':
-            if(expresiones.barras.test(e.target.value)){
+            for (var i = 0; i < countryTags1.length; i++) {
+
+            if(e.target.value == countryTags1[i]){
 
                 showElements("barras")
                 $('#enterProduct').show();
+                break;
+
                     
             } else {
                 hideElements("barras")
                 $('#enterProduct').hide();
         
             }
-
+        }
         break;
         case 'cantidad':
 
-            if(expresiones.cantidad.test(e.target.value)){
+            if(e.target.value >= 1 && e.target.value <=100){
                 showElements("cantidad")
-                $('#RegisterSale').show();
+                $('#registerSale').show();
                         
             } else {
                 hideElements("cantidad")
-                $('#RegisterSale').hide();
+                $('#registerSale').hide();
                         
             }
 
@@ -126,7 +155,7 @@ function hideElements (campo){
     campos[campo] = false;
 };
 
-///----------Eventos para los campos del formulario-------/////
+///----------Se inhabilita uno de los dos inputs dependiendo el que este activo-------/////
 
 
 $("#grupo__barras").click(function(){
@@ -157,6 +186,15 @@ $("#grupo__barras").click(function(){
     
     
  });
+ 
+ $(".disable").click(function(){
+    $(".disable").prop('disabled', true);
+    $('#registerSale').hide();
+    $('#enterProduct').hide();
+
+
+ });
+ ///----------Eventos para los campos del formulario-------/////
 inputs.forEach((input) => {
 
     input.addEventListener('keyup', validarFormulario);
@@ -196,15 +234,15 @@ window.addEventListener("load",function(){
 ///----------------------------Boton submit para "Registrar venta"-----------------------------------------
 
 window.addEventListener("load",function(){
-    $('#RegisterSale').hide();
+    $('#registerSale').hide();
     
-    $("#RegisterSale").click(function(e){ 
+    $("#registerSale").click(function(e){ 
     
         e.preventDefault();
      
         if(campos.cantidad){
-            $("#RegisterSale").unbind('click').click();
-            $('#RegisterSale').hide();
+            $("#registerSale").unbind('click').click();
+            $('#registerSale').hide();
 
         }else{
             

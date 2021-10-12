@@ -347,8 +347,9 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
                                         
                                         <input type="hidden" name="MM_show" value="form1" />
                                     </form>
+                                        
                                     <div class="content-search">
-                                        <table>
+                                        <table id="table2">
                                                 <thead>
                                                     <tr>
                                                         
@@ -360,7 +361,8 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
                                                 <tbody>
                                                 <?php do { ?>
                                                     <tr>                                   
-                                                    <td><a><?php echo $row_lista_productos1['nombre']; ?></a></td>
+                                                    <td><a class="nombre"><?php echo $row_lista_productos1['nombre']; ?></a></td>
+                                                    <td><a class="barras"><?php echo $row_lista_productos1['codigo_barras']; ?></a></td>
                                                     </tr>
                                                     <?php } while ($row_lista_productos1 = mysql_fetch_assoc($lista_productos1)); ?>
                                                 </tbody>
@@ -379,14 +381,14 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
                                                 
                                                 <div class="col-md-2">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputCat" name="categoria" type="text" value="<?php echo $row_lista_productos['categoria']; ?>" readonly/>
+                                                        <input class="form-control disable" id="inputCat" name="categoria" type="text" value="<?php echo $row_lista_productos['categoria']; ?>" readonly/>
                                                         <label for="inputCat">Categoría</label>
                                                     </div>
                                                     
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputName" name="nombre" type="text" value="<?php echo $row_lista_productos['nombre']; ?>" readonly/>
+                                                        <input class="form-control disable" id="inputName" name="nombre" type="text" value="<?php echo $row_lista_productos['nombre']; ?>" readonly/>
                                                         <label for="inputName">Producto</label>
                                                     </div>
                                                 </div>
@@ -397,7 +399,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
 
                                                         <label class="formulario__label" for="inputCant">Cantidad</label>
                                                     </div>
-                                                    <p class="formulario__input-error">Debe ingresar una cantidad con valor numérico.</p>
+                                                    <p class="formulario__input-error">La cantidad debe ser de 1 a 100 productos</p>
 
                                                 </div>
                                                 <div class="col-md-3">
@@ -411,7 +413,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
                                                         <?php date_default_timezone_set('America/Mexico_City'); ?>
                                                         <input id="inputDate" name="fecha" type="dateTime" value="<?php echo date("Y/m/d");?>"  hidden/>
                                                         <input id="inputHour" name="hora" type="dateTime" value="<?php echo date("H:i");?>"  hidden/>
-                                                        <input class="form-control" type="dateTime" value="<?php echo date("d/m/Y h:i A");?>" placeholder="Fecha" readonly/>
+                                                        <input class="form-control disable" type="dateTime" value="<?php echo date("d/m/Y h:i A");?>" placeholder="Fecha" readonly/>
 
                                                         <label for="inputDate">Fecha</label>
                                                     </div>
@@ -422,7 +424,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
                                             </div>
                                         </div>
                                             <div class="mt-4 mb-0">
-                                                <div class="d-grid"><input type="submit" id="RegisterSale"class="btn btn-primary btn-block" value="Registrar venta"/></div>
+                                                <div class="d-grid"><input type="submit" id="registerSale"class="btn btn-primary btn-block" value="Registrar venta"/></div>
                                             </div>
                                             
                                             <input type="hidden" name="MM_insert" value="form2" />
