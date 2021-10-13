@@ -2,7 +2,7 @@
 # FileName="Connection_php_mysql.htm"
 # Type="MYSQL"
 # HTTP="true"
-$hostname_db = "174.138.49.226:3306";
+$hostname_db = "137.184.194.132:3306";
 $database_db = "jorgeriv_inventario";
 $username_db = "jorgeriv_user";
 $password_db = "inventario1*Prueba";

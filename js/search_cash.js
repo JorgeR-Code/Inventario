@@ -3,6 +3,7 @@ const inputs = document.querySelectorAll('#form1 input')
 
 const formulario2 = document.getElementById('form2');
 const inputs2 = document.querySelectorAll('#form2 input')
+const stock = document.getElementById('inputStock')
 
 const expresiones = {
     //	usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
@@ -54,7 +55,6 @@ const validarFormulario = (e) => {
     jQuery(document).ready(function ($) {
 
         barrasz = $('#table2 tbody tr td .barras'); //seleccionamos de donde se tomarán los datos para la entrada codigo de barras
-        console.log(barrasz);
 
 
         $(barrasz).each(function(){//por cada valor se ejecuta la siguiente funcion
@@ -118,8 +118,10 @@ const validarFormulario = (e) => {
         }
         break;
         case 'cantidad':
+            stocknum =Number(stock.value);
+            cantidadNum = Number(e.target.value);
 
-            if(e.target.value >= 1 && e.target.value <=100){
+            if(cantidadNum >= 1 && cantidadNum <= stocknum){
                 showElements("cantidad")
                 $('#registerSale').show();
                         

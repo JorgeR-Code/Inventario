@@ -318,7 +318,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
                                                     <i class="formulario__validation-estado fas fa-times-circle"></i>
                                                     <label class="formulario__label" for="inputBarCode">Código de barras</label>
                                                 </div>
-                                                <p class="formulario__input-error">Deben ser 10 dígitos numéricos.</p>
+                                                <p class="formulario__input-error">Producto inexistente.</p>
 
                                             </div>
                                             <div class="col-md-1">
@@ -341,7 +341,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
                                                 <div class="d-grid"><input type="submit" id="enterProduct"class="btn btn-primary btn-block" value="Agregar"/>
                                         </div>
                                         <div class="mt-4 mb-0 formulario__mensaje" id="formulario__mensaje">
-                                                <p><i class="fas fa-exclamation-triangle"></i><b> Error:</b> Por favor rellena el formulario correctamente!</p>
+                                                <p><i class="fas fa-exclamation-triangle"></i><b> Error:</b> Por favor ingrese un producto válido!</p>
                                             </div>
                                         </div>
                                         
@@ -363,6 +363,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
                                                     <tr>                                   
                                                     <td><a class="nombre"><?php echo $row_lista_productos1['nombre']; ?></a></td>
                                                     <td><a class="barras"><?php echo $row_lista_productos1['codigo_barras']; ?></a></td>
+
                                                     </tr>
                                                     <?php } while ($row_lista_productos1 = mysql_fetch_assoc($lista_productos1)); ?>
                                                 </tbody>
@@ -371,41 +372,13 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
                                     </div>
                                 <form action="<?php echo $editFormAction; ?>" method="post" name="form2" id="form2">
                                 <?php do { ?>
+                                    
                                             <div class="row mb-3">
+                                            
                                                 <div class="col-md-0">
                                                     <div class="form-floating mb-3 mb-md-0">
                                                         <input class="form-control" id="inputId" name="id" type="hidden"/>
                                                         
-                                                    </div>
-                                                </div>
-                                                
-                                                <div class="col-md-2">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control disable" id="inputCat" name="categoria" type="text" value="<?php echo $row_lista_productos['categoria']; ?>" readonly/>
-                                                        <label for="inputCat">Categoría</label>
-                                                    </div>
-                                                    
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control disable" id="inputName" name="nombre" type="text" value="<?php echo $row_lista_productos['nombre']; ?>" readonly/>
-                                                        <label for="inputName">Producto</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2" id="grupo__cantidad">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputCant" type="text" name="cantidad"/>
-                                                        <i class="formulario__validation-estado fas fa-times-circle"></i>
-
-                                                        <label class="formulario__label" for="inputCant">Cantidad</label>
-                                                    </div>
-                                                    <p class="formulario__input-error">La cantidad debe ser de 1 a 100 productos</p>
-
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputCoB" name="codigo_barras" type="text" value="<?php echo $row_lista_productos['codigo_barras']; ?>" readonly/>
-                                                        <label for="inputCoB">Código de barras</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
@@ -418,9 +391,47 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2"))
                                                         <label for="inputDate">Fecha</label>
                                                     </div>
                                                 </div>
+                                                
+                                                <div class="col-md-2">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control disable" id="inputCat" name="categoria" type="text" value="<?php echo $row_lista_productos['categoria']; ?>" readonly/>
+                                                        <label for="inputCat">Categoría</label>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control disable" id="inputName" name="nombre" type="text" value="<?php echo $row_lista_productos['nombre']; ?>" readonly/>
+                                                        <label for="inputName">Producto</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control disable" id="inputCoB" name="codigo_barras" type="text" value="<?php echo $row_lista_productos['codigo_barras']; ?>" readonly/>
+                                                        <label for="inputCoB">Código de barras</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control disable" id="inputStock" name="stock" type="text" value="<?php echo $row_lista_productos['cantidad']; ?>" readonly/>
+                                                        <label for="inputStock">Stock</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2" id="grupo__cantidad">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" id="inputCant" type="text" name="cantidad"/>
+                                                        <i class="formulario__validation-estado fas fa-times-circle"></i>
+
+                                                        <label class="formulario__label" for="inputCant">Cantidad</label>
+                                                    </div>
+                                                    <p class="formulario__input-error">No debe superar la cantidad en stock.</p>
+
+                                                </div>
+                                                
+    
                                             </div>
                                             <div class="mt-4 mb-0 formulario__mensaje" id="formulario__mensaje2">
-                                                <p><i class="fas fa-exclamation-triangle"></i><b> Error:</b>No puede registrar la venta sin una cantidad!</p>
+                                                <p><i class="fas fa-exclamation-triangle"></i><b> Error:</b> No puede registrar la venta sin una cantidad válida!</p>
                                             </div>
                                         </div>
                                             <div class="mt-4 mb-0">
