@@ -2,7 +2,7 @@
 const formulario = document.getElementById('form1');
 const inputs = document.querySelectorAll('#form1 input')
 const selects = document.querySelectorAll('#form1 select')
-
+const idu = document.getElementById('inputIdu');
 
 const expresiones = {
 //	usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
@@ -207,11 +207,12 @@ $("#agregarId").click(function(e){
  
  });
  ///------------------boton submit para "Editar"-----------------////////////
+ console.log(idu.value);
+
  $("#actualizar").click(function(e){ 
 
     e.preventDefault();
- 
-    if(camposE.nombre && camposE.apellido && camposE.telefono && camposE.acceso){
+    if(camposE.nombre && camposE.apellido && camposE.telefono && camposE.acceso && idu.value != ''){
 
         $("#actualizar").unbind('click').click();
 
@@ -230,7 +231,7 @@ $("#agregarId").click(function(e){
 
     e.preventDefault();
  
-    if(camposE.categoria && camposE.nombre && camposE.cantidad && camposE.barras){
+    if(camposE.categoria && camposE.nombre && camposE.cantidad && camposE.barras && idu.value != ''){
 
         $("#actualizarPro").unbind('click').click();
 

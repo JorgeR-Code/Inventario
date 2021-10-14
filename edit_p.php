@@ -263,8 +263,8 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1"))
                                             <div class="row">
                                                 <div class="col-md-1  mb-3" >
                                                     <div class="form-floating">
-                                                        <input class="form-control" id="inputId" name="id" type="text" value="<?php echo $row_lista_productos['id']; ?>" readonly/>
-                                                        <label for="inputId">id</label>
+                                                        <input class="form-control" id="inputIdu" name="id" type="text" value="<?php echo $row_lista_productos['id']; ?>" readonly/>
+                                                        <label for="inputIdu">id</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3 mb-3" id="grupo__categoria">

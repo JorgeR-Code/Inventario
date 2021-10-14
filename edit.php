@@ -264,8 +264,8 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
                                             <div class="row">
                                                 <div class="col-md-1 mb-3">
                                                     <div class="form-floating">
-                                                        <input class="form-control" id="inputId" name="id" type="text" value="<?php echo $row_mostrar_usuarios['id']; ?>" readonly/>
-                                                        <label for="inputId">id</label>
+                                                        <input class="form-control" id="inputIdu" name="id" type="text" value="<?php echo $row_mostrar_usuarios['id']; ?>" readonly/>
+                                                        <label for="inputIdu">id</label>
                                                     </div>
                                                 </div>
                                                 
