@@ -253,8 +253,14 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
                                         <td><?php echo $row_mostrar_usuarios['apellido']; ?></td>
                                         <td><?php echo $row_mostrar_usuarios['telefono']; ?></td>
                                         <td><?php echo $row_mostrar_usuarios['acceso']; ?></td>
+                                        
                                         <td>
-                                          <a class="nav-link" href="edit.php?idu=<?php echo $row_mostrar_usuarios['id']; ?>"><i class="fas fa-edit"></i></a>
+                                        <form action="edit.php" method="post">
+                                          <input type="text" placeholder="id" name="idu" value="<?php echo $row_mostrar_usuarios['id']; ?>" hidden/>
+                                          <button type="submit" class="btn nav-link">
+                                              <i class="fas fa-edit"></i>
+                                          </button>
+                                        </form>
                                         </td>
                                         <td class="dataTables-empty">
                                           <a class="nav-link delete" onclick="confirmation(event)" href="delete_u.php?idu=<?php echo $row_mostrar_usuarios['id']; ?>"><i class="fas fa-trash" ></i></a>

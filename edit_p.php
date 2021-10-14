@@ -112,7 +112,7 @@ if (isset($_GET['pageNum_lista_productos'])) {
 $startRow_lista_productos = $pageNum_lista_productos * $maxRows_lista_productos;
 
 mysql_select_db($database_db, $db);
-$id = $_GET["idp"];
+$id = $_POST['idu'];
 $query_lista_productos = "SELECT * FROM productos WHERE id = '$id'";
 $query_limit_lista_productos = sprintf("%s LIMIT %d, %d", $query_lista_productos, $startRow_lista_productos, $maxRows_lista_productos);
 $lista_productos = mysql_query($query_limit_lista_productos, $db) or die(mysql_error());

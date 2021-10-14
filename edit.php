@@ -39,7 +39,7 @@ if (isset($_GET['pageNum_mostrar_usuarios'])) {
 $startRow_mostrar_usuarios = $pageNum_mostrar_usuarios * $maxRows_mostrar_usuarios;
 
 mysql_select_db($database_db, $db);
-$id = $_GET["idu"];
+$id =  $_POST['idu'];
 $query_mostrar_usuarios = "SELECT * FROM usuarios WHERE id = '$id'";
 $query_limit_mostrar_usuarios = sprintf("%s LIMIT %d, %d", $query_mostrar_usuarios, $startRow_mostrar_usuarios, $maxRows_mostrar_usuarios);
 $mostrar_usuarios = mysql_query($query_limit_mostrar_usuarios, $db) or die(mysql_error());

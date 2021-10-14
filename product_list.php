@@ -254,7 +254,12 @@ $totalPages_lista_productos = ceil($totalRows_lista_productos/$maxRows_lista_pro
                                         <td><?php echo $row_lista_productos['cantidad']; ?></td>
                                         <td><?php echo $row_lista_productos['codigo_barras']; ?></td>
                                         <td>
-                                          <a class="nav-link" href="edit_p.php?idp=<?php echo $row_lista_productos['id']; ?>"><i class="fas fa-edit"></i></a>
+                                        <form action="edit_p.php" method="post">
+                                          <input type="text" placeholder="id" name="idu" value="<?php echo $row_lista_productos['id']; ?>" hidden/>
+                                          <button type="submit" class="btn nav-link">
+                                              <i class="fas fa-edit"></i>
+                                          </button>
+                                        </form>
                                         </td>
                                         <td>
                                         <a class="nav-link delete" onclick="confirmation(event)" href="delete_p.php?idu=<?php echo $row_lista_productos['id']; ?>"><i class="fas fa-trash" ></i></a>
