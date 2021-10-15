@@ -62,14 +62,13 @@ if (isset($_SERVER['QUERY_STRING'])) {
 
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) 
 {
-
-    $id = $_POST['id'];
+    $ide = $_POST['id'];
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
     $telefono = $_POST['telefono'];
     $acceso = $_POST['acceso'];
 
-    $insertSQL = sprintf("UPDATE usuarios SET nombre='$nombre', apellido='$apellido', telefono='$telefono', acceso='$acceso' WHERE id = '$id'");
+    $insertSQL = sprintf("UPDATE usuarios SET nombre='$nombre', apellido='$apellido', telefono='$telefono', acceso='$acceso' WHERE id = '$ide'");
     
 
         mysql_select_db($database_db, $db);
@@ -262,11 +261,14 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
                                     <form action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1">
                                         <?php do { ?>
                                             <div class="row">
-                                                <div class="col-md-1 mb-3">
+                                                <div class="col-md-1 mb-3"id="grupo__id">
                                                     <div class="form-floating">
-                                                        <input class="form-control" id="inputIdu" name="id" type="text" value="<?php echo $row_mostrar_usuarios['id']; ?>" readonly/>
-                                                        <label for="inputIdu">id</label>
+                                                        <input class="form-control disable" id="inputIdu" name="id" type="text" value="<?php echo $row_mostrar_usuarios['id']; ?>" readonly/>
+                                                        <i class="formulario__validation-estado fas fa-times-circle"></i>
+                                                        <label class="formulario__label" for="inputIdu">id</label>
                                                     </div>
+                                                    <p class="formulario__input-error">Error!.</p>
+
                                                 </div>
                                                 
                                                 <div class="col-md-3 mb-3" id="grupo__nombre"> 
@@ -314,6 +316,9 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
                                                     <p class="formulario__input-error">Debe asignar un nivel de acceso.</p>
 
                                                 </div>
+                                            </div>
+                                            <div class="mt-4 mb-0 formulario__mensaje" id="formulario__error">
+                                                <p><i class="fas fa-exclamation-triangle"></i><b> Error:</b> EL "id" NO DEBE SER MODIFICADO!, Por favor recargue la página nuevamente.</p>
                                             </div>
                                             <div class="mt-4 mb-0 formulario__mensaje" id="formulario__mensaje">
                                                 <p><i class="fas fa-exclamation-triangle"></i><b> Error:</b> Por favor rellena el formulario correctamente!</p>

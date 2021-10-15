@@ -11696,6 +11696,12 @@ body {
 }
 
 /* ------------Formulario ------------- */
+
+.hidden-text-input{
+  color: transparent;
+}
+
+
 .formulario__input-error{
 font-size: 12px;
 margin-bottom: 0;

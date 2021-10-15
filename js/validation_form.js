@@ -3,6 +3,12 @@ const formulario = document.getElementById('form1');
 const inputs = document.querySelectorAll('#form1 input')
 const selects = document.querySelectorAll('#form1 select')
 const idu = document.getElementById('inputIdu');
+let idInicial = localStorage.setItem('prueba', idu.value);
+let idInicial2 = localStorage.getItem('prueba');
+
+
+
+
 
 const expresiones = {
 //	usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
@@ -32,6 +38,7 @@ const campos = {
 };
 ///-----Campos para fomulario "Editar"-------////
 const camposE = {
+    id: true,
     nombre:true,
     apellido:true,
     telefono:true,
@@ -49,52 +56,102 @@ const camposE = {
 const validarFormulario = (e) => {
 
     switch (e.target.name) {
+        case 'id':
+
+            idModificated ()
+            
+        break;
 
         case 'nombre':
+            if(expresiones.nombre.test( e.target.value)){
+                showElements("nombre")
 
-            validarCampo(expresiones.nombre, e.target, 'nombre');
+            }else{
+                hideElements("nombre")
+
+            }
 
         break;
         case 'apellido':
+            if(expresiones.apellido.test( e.target.value)){
+                showElements("apellido")
 
-            validarCampo(expresiones.apellido, e.target, 'apellido');
+            }else{
+                hideElements("apellido")
+
+            }
 
         break;
         case 'telefono':
+            if(expresiones.telefono.test( e.target.value)){
+                showElements("telefono")
 
-            validarCampo(expresiones.telefono, e.target, 'telefono');
+            }else{
+                hideElements("telefono")
+
+            }
         break;
         case 'acceso':
+            if(expresiones.acceso.test( e.target.value)){
+                showElements("acceso")
 
-            validarCampo(expresiones.acceso, e.target, 'acceso');
+            }else{
+                hideElements("acceso")
+
+            }
 
         break;
             
         
         case 'password':
+            if(expresiones.password.test( e.target.value)){
+                showElements("contraseña")
 
-            validarCampo(expresiones.password, e.target, 'contraseña');
+            }else{
+                hideElements("contraseña")
+
+            }
             passwordConfirmFunction();
         break;
         case 'passwordConfirm':
+            if(expresiones.password.test( e.target.value)){
+                showElements("confirmContraseña")
 
-            validarCampo(expresiones.password, e.target, 'confirmContraseña');
+            }else{
+                hideElements("confirmContraseña")
+
+            }
             passwordConfirmFunction();
 
         break;
         case 'categoria':
+            if(expresiones.categoria.test( e.target.value)){
+                showElements("categoria")
 
-            validarCampo(expresiones.categoria, e.target, 'categoria');
+            }else{
+                hideElements("categoria")
+
+            }
 
         break;
         case 'cantidad':
+            if(expresiones.cantidad.test( e.target.value)){
+                showElements("cantidad")
 
-            validarCampo(expresiones.cantidad, e.target, 'cantidad');
+            }else{
+                hideElements("cantidad")
+
+            }
 
         break;
         case 'codigo_barras':
+            if(expresiones.barras.test( e.target.value)){
+                showElements("barras")
 
-            validarCampo(expresiones.barras, e.target, 'barras');
+            }else{
+                hideElements("barras")
+
+            }
 
         break;
     }
@@ -103,28 +160,33 @@ const validarFormulario = (e) => {
 
 
 ///----Funcion para validar campos de "Registrar" y "Editar"----------//////////
-const validarCampo = (expresion, input, campo) => {
-    if(expresion.test(input.value)){
-        document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-incorrecto');
-        document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-correcto');
-        document.querySelector(`#grupo__${campo} svg`).classList.remove('fa-times-circle');
-        document.querySelector(`#grupo__${campo} svg`).classList.add('fa-check-circle');
-        document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.remove('formulario__input-error-activo')
-        campos[campo] = true;
-        camposE[campo] = true;
+function idModificated (){
 
-    } else {
-        document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-correcto');
-        document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-incorrecto');
-        document.querySelector(`#grupo__${campo} svg`).classList.remove('fa-check-circle');
-        document.querySelector(`#grupo__${campo} svg`).classList.add('fa-times-circle');
-        document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.add('formulario__input-error-activo')
-        campos[campo] = false;
-        camposE[campo] = false;
+    hideElements("id")
+    document.getElementById('formulario__error').classList.add('formulario__mensaje-activo');
+    $('#actualizar').hide();
+};
 
+function showElements (campo){
+    document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-incorrecto');
+    document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-correcto');
+    document.querySelector(`#grupo__${campo} svg`).classList.remove('fa-times-circle');
+    document.querySelector(`#grupo__${campo} svg`).classList.add('fa-check-circle');
+    document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.remove('formulario__input-error-activo');
+    campos[campo] = true;
+    camposE[campo] = true;
+    
+};
 
-    }
-}
+function hideElements (campo){
+    document.getElementById(`grupo__${campo}`).classList.remove('formulario__grupo-correcto');
+    document.getElementById(`grupo__${campo}`).classList.add('formulario__grupo-incorrecto');
+    document.querySelector(`#grupo__${campo} svg`).classList.remove('fa-check-circle');
+    document.querySelector(`#grupo__${campo} svg`).classList.add('fa-times-circle');
+    document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.add('formulario__input-error-activo');
+    campos[campo] = false;
+    camposE[campo] = false;
+};
 
 ////------Funcion para validar contraseñas en "Registrar"--------/////////
 const passwordConfirmFunction = () =>
@@ -169,6 +231,8 @@ selects.forEach((select) => {
 
 /////------Boton submit para "Registrar"------////////////
 window.addEventListener("load",function(){
+
+
 $("#agregarId").click(function(e){ 
 
     e.preventDefault();
@@ -207,23 +271,31 @@ $("#agregarId").click(function(e){
  
  });
  ///------------------boton submit para "Editar"-----------------////////////
- console.log(idu.value);
 
  $("#actualizar").click(function(e){ 
+    const idu2 = document.getElementById('inputIdu');
+
 
     e.preventDefault();
-    if(camposE.nombre && camposE.apellido && camposE.telefono && camposE.acceso && idu.value != ''){
 
-        $("#actualizar").unbind('click').click();
-
+    if(idInicial2!= idu2.value){
+        idModificated ()
     }else{
-        
-        document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
-        setTimeout(() => {
-        document.getElementById('formulario__mensaje').classList.remove('formulario__mensaje-activo');
-        
-        }, 3000);
+        if(camposE.nombre && camposE.apellido && camposE.telefono && camposE.acceso && idu.value != '' && camposE.id){
+
+            $("#actualizar").unbind('click').click();
+            localStorage.clear();
+    
+        }else{
+            
+            document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
+            setTimeout(() => {
+            document.getElementById('formulario__mensaje').classList.remove('formulario__mensaje-activo');
+            
+            }, 3000);
+        }
     }
+    
  
  });
 
