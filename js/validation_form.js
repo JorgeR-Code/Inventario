@@ -3,8 +3,8 @@ const formulario = document.getElementById('form1');
 const inputs = document.querySelectorAll('#form1 input')
 const selects = document.querySelectorAll('#form1 select')
 const idu = document.getElementById('inputIdu');
-let idInicial = localStorage.setItem('prueba', idu.value);
-let idInicial2 = localStorage.getItem('prueba');
+let idInicial = localStorage.setItem('Sin cargar', idu.value);
+let idInicial2 = localStorage.getItem('Sin cargar');
 
 
 
@@ -165,6 +165,8 @@ function idModificated (){
     hideElements("id")
     document.getElementById('formulario__error').classList.add('formulario__mensaje-activo');
     $('#actualizar').hide();
+    $('#actualizarPro').hide();
+
 };
 
 function showElements (campo){
@@ -300,12 +302,18 @@ $("#agregarId").click(function(e){
  });
 
  $("#actualizarPro").click(function(e){ 
+    const idu2 = document.getElementById('inputIdu');
 
     e.preventDefault();
- 
+
+    if(idInicial2!= idu2.value){
+        idModificated ()
+    }else{
     if(camposE.categoria && camposE.nombre && camposE.cantidad && camposE.barras && idu.value != ''){
 
         $("#actualizarPro").unbind('click').click();
+        localStorage.clear();
+
 
     }else{
         
@@ -315,6 +323,6 @@ $("#agregarId").click(function(e){
         
         }, 3000);
     }
- 
+}
  });
 });
