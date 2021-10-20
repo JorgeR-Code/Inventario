@@ -128,9 +128,9 @@ if (isset($_POST['user'])) {
             <div id="layoutAuthentication_footer">
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <!-- <div class="text-muted">Copyright &copy; Your Website 2021</div>
-                            <div>
+                        <div class="align-items-center justify-content-between small">
+                            <div class="text-muted">v1.2</div>
+                            <!-- <div>
                                 <a href="#">Privacy Policy</a>
                                 &middot;
                                 <a href="#">Terms &amp; Conditions</a>

@@ -7121,6 +7121,8 @@ textarea.form-control-lg {
 }
 
 .align-items-center {
+  text-align: center;
+  align-content: center;
   align-items: center !important;
 }
 
