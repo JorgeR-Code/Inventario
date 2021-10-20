@@ -11,10 +11,17 @@ $(function() {
 
        break;
        case '1':
-
+        $('#headerUsuarios').hide();
+        $('#registrarUsuario').hide();
+        $('#listarUsuarios').hide();
+        $('#headerVentas').hide();
+        $('#cajaRegistradora').hide();
+        $('#registarVentas').hide();
        break;
        case '2':
-
+        $('#headerUsuarios').hide();
+        $('#registrarUsuario').hide();
+        $('#listarUsuarios').hide();
        break;
        case '3':
         $('#headerUsuarios').hide();
