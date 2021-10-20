@@ -34,23 +34,23 @@ if (!isset($_SESSION)) {
 }
 
 ////----------------------------------------------------
-$maxRows_mostrar_usuarios = 1;
-$pageNum_mostrar_usuarios = 0;
+$maxRows_mostrar_usuarios1 = 1;
+$pageNum_mostrar_usuarios1 = 0;
 if (isset($_GET['pageNum_mostrar_usuarios'])) {
-  $pageNum_mostrar_usuarios = $_GET['pageNum_mostrar_usuarios'];
+  $pageNum_mostrar_usuarios1 = $_GET['pageNum_mostrar_usuarios'];
 }
-$startRow_mostrar_usuarios = $pageNum_mostrar_usuarios * $maxRows_mostrar_usuarios;
+$startRow_mostrar_usuarios1 = $pageNum_mostrar_usuarios1 * $maxRows_mostrar_usuarios1;
 
 $varNombre = $_SESSION['MM_Username'];
 $varPass = $_SESSION['MM_Userpass'];
 
 mysql_select_db($database_db, $db);
-$query_mostrar_usuarios = "SELECT * FROM usuarios WHERE nombre='$varNombre' AND password ='$varPass'";
-$query_limit_mostrar_usuarios = sprintf("%s LIMIT %d, %d", $query_mostrar_usuarios, $startRow_mostrar_usuarios, $maxRows_mostrar_usuarios);
-$mostrar_usuarios = mysql_query($query_limit_mostrar_usuarios, $db) or die(mysql_error());
-$row_mostrar_usuarios = mysql_fetch_assoc($mostrar_usuarios);
+$query_mostrar_usuarios1 = "SELECT * FROM usuarios WHERE nombre='$varNombre' AND password ='$varPass'";
+$query_limit_mostrar_usuarios1 = sprintf("%s LIMIT %d, %d", $query_mostrar_usuarios1, $startRow_mostrar_usuarios1, $maxRows_mostrar_usuarios1);
+$mostrar_usuarios1 = mysql_query($query_limit_mostrar_usuarios1, $db) or die(mysql_error());
+$row_mostrar_usuarios1 = mysql_fetch_assoc($mostrar_usuarios1);
 
-$acceso = $row_mostrar_usuarios['acceso'];
+$acceso = $row_mostrar_usuarios1['acceso'];
 
 ///-----------------------------------------------------
 $MM_authorizedUsers = "";
@@ -108,6 +108,9 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
         <link href="css/styles.css" rel="stylesheet" />
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
 
     </head>
     <body class="sb-nav-fixed">
@@ -264,15 +267,16 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
                 </footer>
             </div>
         </div>
-        <script src="js/scripts.js"></script>
-        <script src="js/level_access.js"></script>
+        
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-        <script src="js/datatables-simple-demo.js"></script>
+        <script src="js/scripts.js"></script>
+        <script src="js/level_access.js"></script>
+        <!-- <script src="assets/demo/chart-area-demo.js"></script> -->
+        <!-- <script src="assets/demo/chart-bar-demo.js"></script> -->
+        <!-- <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script> -->
+        <!-- <script src="js/datatables-simple-demo.js"></script> -->
 
     </body>
 </html>

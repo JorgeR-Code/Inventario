@@ -1,3 +1,5 @@
+<?php require_once('Connections/db.php'); ?>
+
 <?php
 //initialize the session
 if (!isset($_SESSION)) {
@@ -30,6 +32,27 @@ if ((isset($_GET['doLogout'])) &&($_GET['doLogout']=="true")){
 if (!isset($_SESSION)) {
   session_start();
 }
+
+////----------------------------------------------------
+$maxRows_mostrar_usuarios1 = 1;
+$pageNum_mostrar_usuarios1 = 0;
+if (isset($_GET['pageNum_mostrar_usuarios'])) {
+  $pageNum_mostrar_usuarios1 = $_GET['pageNum_mostrar_usuarios'];
+}
+$startRow_mostrar_usuarios1 = $pageNum_mostrar_usuarios1 * $maxRows_mostrar_usuarios1;
+
+$varNombre = $_SESSION['MM_Username'];
+$varPass = $_SESSION['MM_Userpass'];
+
+mysql_select_db($database_db, $db);
+$query_mostrar_usuarios1 = "SELECT * FROM usuarios WHERE nombre='$varNombre' AND password ='$varPass'";
+$query_limit_mostrar_usuarios1 = sprintf("%s LIMIT %d, %d", $query_mostrar_usuarios1, $startRow_mostrar_usuarios1, $maxRows_mostrar_usuarios1);
+$mostrar_usuarios1 = mysql_query($query_limit_mostrar_usuarios1, $db) or die(mysql_error());
+$row_mostrar_usuarios1 = mysql_fetch_assoc($mostrar_usuarios1);
+
+$acceso = $row_mostrar_usuarios1['acceso'];
+
+///-----------------------------------------------------
 $MM_authorizedUsers = "";
 $MM_donotCheckaccess = "true";
 
@@ -84,6 +107,8 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -117,42 +142,43 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             
-                            <div class="sb-sidenav-menu-heading">Usuarios</div>
-          
-                            <a class="nav-link" href="register_user.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-user-edit"></i></div>
-                                Registrar usuario
-                            </a>
-                            <a class="nav-link" href="user_list.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
-                                Lista de usuarios
-                            </a>
-                            <div class="sb-sidenav-menu-heading">Productos</div>
-          
-                            <a class="nav-link" href="new_product.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-box-open"></i></div>
-                                Nuevo producto
-                            </a>
-                            <a class="nav-link" href="product_list.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-boxes"></i></div>
-                                Lista de productos
-                            </a>
-                            <div class="sb-sidenav-menu-heading">Ventas</div>
-          
-                            <a class="nav-link" href="cash_register.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-cash-register"></i></div>
-                                Caja registradora
-                            </a>
-                            <a class="nav-link" href="sales_records.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-line"></i></div>
-                                registro de ventas
-                            </a>
+                        <div id="headerUsuarios" class="sb-sidenav-menu-heading">Usuarios</div>
+                                
+                                <a id="registrarUsuario" class="nav-link" href="register_user.php">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-user-edit"></i></div>
+                                    Registrar usuario
+                                </a>
+                                <a id="listarUsuarios" class="nav-link" href="user_list.php">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                                    Lista de usuarios
+                                </a>
+                                <div id="headerProductos" class="sb-sidenav-menu-heading">Productos</div>
 
+                                <a id="registrarProducto" class="nav-link" href="new_product.php">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-box-open"></i></div>
+                                    Nuevo producto
+                                </a>
+                                <a id="listarProductos" class="nav-link" href="product_list.php">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-boxes"></i></div>
+                                    Lista de productos
+                                </a>
+                                <div id="headerVentas" class="sb-sidenav-menu-heading">Ventas</div>
+
+                                <a id="cajaRegistradora" class="nav-link" href="cash_register.php">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-cash-register"></i></div>
+                                    Caja registradora
+                                </a>
+                                <a id="registarVentas" class="nav-link" href="sales_records.php">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-chart-line"></i></div>
+                                    Registro de ventas
+                                </a>
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
                     <div class="small">Iniciaste sesión como:</div>
                        <?php echo $_SESSION['MM_Username'] ;¨?>
+                       <input class="form-control" id="nivelAcc" name="nivelAcc" type="hidden" value="<?php echo $acceso; ?>"/>
+
                     </div>
                 </nav>
             </div>
@@ -198,6 +224,8 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
+        <script src="js/level_access.js"></script>
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
         <script src="assets/demo/chart-area-demo.js"></script>
         <script src="assets/demo/chart-bar-demo.js"></script>

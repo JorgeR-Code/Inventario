@@ -18,6 +18,8 @@ $(function() {
        break;
        case '3':
         $('#headerUsuarios').hide();
+        $('#registrarUsuario').hide();
+        $('#listarUsuarios').hide();
         $('#listarProductos').hide();
         $('#registarVentas').hide();
 
