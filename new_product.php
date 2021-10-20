@@ -234,7 +234,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
                                             <div class="row ">
                                                 <div class="col-md-0 mb-3">
                                                     <div>
-                                                        <input class="form-control" id="inputId" name="id" type="hidden" placeholder="Enter the ID" />
+                                                        <input class="form-control" id="inputIdu" name="id" type="hidden" placeholder="Enter the ID" />
                                                     </div>
                                                 </div>
                                                 

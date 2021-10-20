@@ -3,8 +3,8 @@ const formulario = document.getElementById('form1');
 const inputs = document.querySelectorAll('#form1 input')
 const selects = document.querySelectorAll('#form1 select')
 const idu = document.getElementById('inputIdu');
-let idInicial = localStorage.setItem('Sin cargar', idu.value);
-let idInicial2 = localStorage.getItem('Sin cargar');
+var idInicial = localStorage.setItem('Sin cargar', idu.value);
+var idInicial2 = localStorage.getItem('Sin cargar');
 
 
 
